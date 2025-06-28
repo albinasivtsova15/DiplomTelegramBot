@@ -18,9 +18,13 @@ from crm_system.leads.models import UserRequest
 
 
 bot = telebot.TeleBot(os.environ.get("TELEGRAM_TOKEN"))
+
+URL = "https://3801-212-47-239-66.ngrok-free.app/webhook/"
+set_webhook_url = f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url={URL}"
+requests.get(set_webhook_url)
+
 #YOUR_USER_ID = 1404001228
 ADMIN_ID = 1404001228
-import os
 ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
 
 customer_data = {}  # Для хранения данных по каждому пользователю
@@ -331,4 +335,4 @@ def get_project_info(message):
     )
     bot.send_message(ADMIN_ID, admin_msg)
 
-bot.polling(none_stop=True)
+#bot.polling(none_stop=True)
